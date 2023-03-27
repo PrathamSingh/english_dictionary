@@ -1,25 +1,32 @@
-import logo from './logo.svg';
-import './App.css';
+import { useState, useEffect } from 'react'
+import DictionaryContainer from './components/dictionaryContainer/dictionaryContainer'
+import ThemeContext from './components/themeContext/themeContext'
+import './App.scss'
 
 function App() {
+  const [theme, setTheme] = useState('light')
+
+  useEffect(() => {
+    switch (theme) {
+      case 'dark':
+        document.body.classList.remove('light')
+        document.body.classList.add('dark')
+        break
+      case 'light':
+      default:
+        document.body.classList.remove('dark')
+        document.body.classList.remove('light')
+        break
+    }
+  }, [theme])
+
   return (
-    <div className="App">
-      <header className="App-header">
-        <img src={logo} className="App-logo" alt="logo" />
-        <p>
-          Edit <code>src/App.js</code> and save to reload.
-        </p>
-        <a
-          className="App-link"
-          href="https://reactjs.org"
-          target="_blank"
-          rel="noopener noreferrer"
-        >
-          Learn React
-        </a>
-      </header>
-    </div>
-  );
+    <ThemeContext.Provider value={{ theme, setTheme }}>
+      <div className={`App ${theme}`}>
+        <DictionaryContainer />
+      </div>
+    </ThemeContext.Provider>
+  )
 }
 
 export default App;

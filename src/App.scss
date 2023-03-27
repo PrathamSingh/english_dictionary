@@ -1,0 +1,34 @@
+.App {
+  text-align: center;
+  box-sizing: border-box;
+}
+
+.debug {
+  border: 1px solid red;
+}
+
+.sans {
+  font-family: 'Inter', sans-serif;
+}
+
+.serif {
+  font-family: 'Lora', serif;
+}
+
+.mono {
+  font-family: 'Inconsolata', monospace;
+}
+
+.dark {
+  background: #000;
+  color: #fff;
+}
+
+@media screen and (min-width: 280px) and (max-width: 912px) {
+  .App {
+    padding: 24px;
+  }
+  .searchWord {
+    font-size: 30px;
+  }
+}
